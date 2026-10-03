@@ -1,0 +1,703 @@
+
+
+.sidebar {
+  /*
+   * The sidebar itself NEVER scrolls.
+   * Brand, Journey and Bottom User section
+   * therefore remain fixed.
+   */
+  overflow: hidden !important;
+
+  /*
+   * Prevent any horizontal movement.
+   */
+  overflow-x: hidden !important;
+
+  /*
+   * Keep the flex structure stable.
+   */
+  min-height: 0;
+}
+
+
+/* =========================================================
+   ONLY NAVIGATION SCROLLS
+========================================================= */
+
+.sidebar-nav {
+  /*
+   * Take all remaining vertical space
+   * between Journey and Bottom section.
+   */
+  flex: 1 1 auto;
+
+  /*
+   * IMPORTANT:
+   * Allows this flex child to become smaller
+   * instead of pushing the sidebar itself.
+   */
+  min-height: 0;
+
+  /*
+   * Only this area scrolls vertically.
+   */
+  overflow-y: auto;
+
+  /*
+   * NEVER allow horizontal scrolling.
+   */
+  overflow-x: hidden;
+
+  /*
+   * Hide scrollbar in Firefox.
+   */
+  scrollbar-width: none;
+
+  /*
+   * Hide scrollbar in old Edge/IE.
+   */
+  -ms-overflow-style: none;
+}
+
+
+/*
+ * Hide navigation scrollbar in Chrome,
+ * Edge and Safari.
+ */
+.sidebar-nav::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+
+/*
+ * The nav itself must NOT become another
+ * scrolling container.
+ */
+.sidebar-nav nav {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  overflow: visible;
+
+  width: 100%;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   NAVIGATION ITEMS
+========================================================= */
+
+.nav-item {
+  min-width: 0;
+  max-width: 100%;
+
+  box-sizing: border-box;
+}
+
+
+/*
+ * Prevent long labels from creating
+ * horizontal overflow.
+ */
+.nav-item span {
+  min-width: 0;
+
+  max-width: 100%;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   FIXED BOTTOM SECTION
+========================================================= */
+
+.side-bottom {
+  /*
+   * Never shrink the bottom section.
+   */
+  flex: 0 0 auto;
+
+  /*
+   * Keep it visually separated.
+   */
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   LOGOUT
+   Normal state matches the other sidebar buttons.
+   Hover state becomes red.
+========================================================= */
+
+.logout {
+  width: 100% !important;
+
+  box-sizing: border-box;
+
+  /*
+   * Same visual family as the other
+   * sidebar navigation elements.
+   */
+  border: 1px solid #ffffff14 !important;
+
+  background: #ffffff08 !important;
+
+  color: #9db0c2 !important;
+
+  border-radius: 9px;
+
+  padding: 9px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+
+/*
+ * Normal hover is NOT red.
+ * It behaves like the navigation items.
+ */
+.logout:hover {
+  background:
+    rgba(223, 17, 17, 0.884) !important;
+
+  border-color:
+    rgba(255, 255, 255, 0.10) !important;
+
+  color: #121313 !important;
+
+  transform: translateX(2px);
+}
+
+
+/*
+ * More obvious danger state when
+ * the user intentionally hovers the
+ * sign-out action.
+ */
+.logout:active {
+  background:
+    rgba(239, 68, 68, 0.12) !important;
+
+  border-color:
+    rgba(248, 113, 113, 0.30) !important;
+
+  color: #fca5a5 !important;
+
+  transform: translateX(1px);
+}
+
+
+/*
+ * Keyboard accessibility.
+ */
+.logout:focus-visible {
+  outline: 2px solid
+    rgba(34, 211, 238, 0.55);
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   PROFILE SKILLS
+========================================================= */
+
+.phase1-skills {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   SKILL INTRO
+========================================================= */
+
+.phase1-skill-intro {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 14px;
+
+  padding: 14px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 12px;
+
+  background:
+    rgba(34, 211, 238, 0.045);
+}
+
+.phase1-skill-intro strong {
+  display: block;
+
+  color: #f1f5fb;
+
+  font-size: 13px;
+
+  margin-bottom: 4px;
+}
+
+.phase1-skill-intro p {
+  margin: 0;
+
+  color: #8b96ad;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+
+  max-width: 430px;
+}
+
+
+/* =========================================================
+   SKILL COUNT
+========================================================= */
+
+.phase1-skill-count {
+  flex: none;
+
+  min-width: 58px;
+
+  padding: 8px 10px;
+
+  border-radius: 10px;
+
+  border: 1px solid
+    rgba(34, 211, 238, 0.22);
+
+  background:
+    rgba(34, 211, 238, 0.08);
+
+  text-align: center;
+}
+
+.phase1-skill-count strong {
+  display: block;
+
+  color: #22d3ee;
+
+  font-size: 20px;
+
+  line-height: 1;
+}
+
+.phase1-skill-count span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #8b96ad;
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   ADD SKILL FORM
+========================================================= */
+
+.phase1-skill-form {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.5fr)
+    minmax(120px, 0.9fr)
+    minmax(110px, 0.8fr)
+    auto;
+
+  gap: 10px;
+
+  align-items: end;
+
+  padding: 14px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 12px;
+
+  background: var(--soft);
+}
+
+.phase1-field {
+  min-width: 0;
+}
+
+.phase1-field label {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  color: #c7d6f2;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+.phase1-field input,
+.phase1-field select {
+  width: 100%;
+
+  box-sizing: border-box;
+}
+
+.phase1-experience-input {
+  position: relative;
+}
+
+.phase1-experience-input input {
+  padding-right: 42px;
+}
+
+.phase1-experience-input span {
+  position: absolute;
+
+  right: 10px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #8b96ad;
+
+  font-size: 10px;
+
+  pointer-events: none;
+}
+
+.phase1-add-skill {
+  height: 40px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   SKILL LIST HEADER
+========================================================= */
+
+.phase1-skill-list-heading {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-top: 3px;
+}
+
+.phase1-skill-list-heading strong {
+  display: block;
+
+  color: #f1f5fb;
+
+  font-size: 13px;
+}
+
+.phase1-skill-list-heading span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #8b96ad;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   SKILL LIST
+========================================================= */
+
+.phase1-skill-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.phase1-skill-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  padding: 10px 11px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 11px;
+
+  background: var(--paper);
+
+  transition:
+    border-color 0.16s ease,
+    background 0.16s ease,
+    transform 0.16s ease;
+}
+
+.phase1-skill-card:hover {
+  border-color:
+    rgba(34, 211, 238, 0.28);
+
+  background:
+    rgba(34, 211, 238, 0.035);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SKILL ICON
+========================================================= */
+
+.phase1-skill-icon {
+  width: 32px;
+
+  height: 32px;
+
+  flex: none;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 9px;
+
+  background:
+    rgba(34, 211, 238, 0.11);
+
+  color: #22d3ee;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   SKILL DETAILS
+========================================================= */
+
+.phase1-skill-details {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.phase1-skill-details strong {
+  display: block;
+
+  color: #f1f5fb;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.phase1-skill-details span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #8b96ad;
+
+  font-size: 10px;
+
+  text-transform: capitalize;
+}
+
+
+/* =========================================================
+   DELETE SKILL
+========================================================= */
+
+.phase1-delete-skill {
+  width: 28px;
+
+  height: 28px;
+
+  flex: none;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid
+    rgba(248, 113, 113, 0.16);
+
+  border-radius: 7px;
+
+  background:
+    rgba(248, 113, 113, 0.055);
+
+  color: #f87171;
+
+  font-size: 18px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.phase1-delete-skill:hover {
+  background:
+    rgba(248, 113, 113, 0.14);
+
+  border-color:
+    rgba(248, 113, 113, 0.35);
+
+  color: #fecaca;
+}
+
+.phase1-delete-skill:disabled {
+  opacity: 0.55;
+
+  cursor: wait;
+}
+
+
+/* =========================================================
+   EMPTY SKILLS
+========================================================= */
+
+.phase1-empty-skills {
+  padding: 24px 16px;
+
+  text-align: center;
+
+  border: 1px dashed
+    rgba(139, 150, 173, 0.25);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.015);
+}
+
+.phase1-empty-icon {
+  width: 34px;
+
+  height: 34px;
+
+  display: grid;
+
+  place-items: center;
+
+  margin: 0 auto 8px;
+
+  border-radius: 10px;
+
+  background:
+    rgba(34, 211, 238, 0.08);
+
+  color: #22d3ee;
+
+  font-size: 20px;
+}
+
+.phase1-empty-skills strong {
+  display: block;
+
+  color: #e7ecf6;
+
+  font-size: 12px;
+}
+
+.phase1-empty-skills p {
+  max-width: 280px;
+
+  margin: 5px auto 0;
+
+  color: #8b96ad;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .phase1-skill-form {
+    grid-template-columns:
+      1fr 1fr;
+
+    align-items: end;
+  }
+
+  .phase1-add-skill {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .phase1-skill-intro {
+    align-items: flex-start;
+  }
+
+  .phase1-skill-form {
+    grid-template-columns: 1fr;
+  }
+
+  .phase1-add-skill {
+    width: 100%;
+  }
+}
+
