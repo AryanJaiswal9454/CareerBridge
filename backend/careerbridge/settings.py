@@ -179,7 +179,10 @@ DEFAULT_FROM_EMAIL = os.getenv(
 )
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://careerbridge-frontend-4ne9.onrender.com",
 ]
+
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = "/media/"
