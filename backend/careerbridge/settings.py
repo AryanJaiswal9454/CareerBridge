@@ -24,13 +24,23 @@ load_dotenv(BASE_DIR / ".env")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "True").lower() == "true"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+DEBUG = os.getenv("DEBUG", "True").strip().lower() == "true"
+
+# Hosts allowed to access the Django application.
+# Render provides the production hostname through the environment variable.
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv(
+        "ALLOWED_HOSTS",
+        "careerbridge-po54.onrender.com,localhost,127.0.0.1"
+    ).split(",")
+    if host.strip()
+]
+
+
 
 
 # Application definition
